@@ -1,0 +1,9 @@
+{
+  "name": "the-feelings-factory",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Feelings Factory storefront — static site + Vercel serverless Stripe checkout.",
+  "dependencies": {
+    "stripe": "^16.0.0"
+  }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Feelings Factory — Wear Your Truth</title>
+<meta name="description" content="Graphic tees for the overstimulated, the fawning, the fed-up, and the deep feelers. You're not too much. You're human.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">🏭 The Feelings <span class="dot">Factory</span></a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge" data-cart-badge>0</span></a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <h1>You're not too much.<br>You're <span class="highlight">human.</span></h1>
+      <p class="lead">Graphic tees for the overstimulated, the fawning, the fed-up, and the deep feelers. Made with empathy. Worn with sarcasm.</p>
+      <div class="hero-actions">
+        <a href="shop.html" class="btn">Shop the Tees</a>
+        <a href="about.html" class="btn btn-secondary">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="https://i.etsystatic.com/65329339/r/il/69f43c/8033066968/il_1080xN.8033066968_idnm.jpg" alt="Senses Activated Octopus Tee">
+      <div class="badge-sticker">5.0★<br>rated</div>
+    </div>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="container">
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <span class="emoji">💬</span>
+        <h3>Wear Your Truth</h3>
+        <p>Say the quiet part on a t-shirt.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="emoji">🤝</span>
+        <h3>Made With Empathy</h3>
+        <p>Designed from real feelings, real therapy sessions.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="emoji">🫶</span>
+        <h3>Comfort That Gets It</h3>
+        <p>Soft, unisex tees that fit how you feel.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="emoji">😏</span>
+        <h3>Sarcasm With Compassion</h3>
+        <p>A little dark humor. A lot of heart.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="section-title">
+    <h2>Fresh off the factory line</h2>
+    <a href="shop.html">See all tees →</a>
+  </div>
+  <div class="product-grid" id="featured-grid"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="logo">🏭 The Feelings Factory</div>
+    <div class="footer-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      <a href="https://factormyfeels.etsy.com" target="_blank" rel="noopener" aria-label="Etsy">🧵</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  const grid = document.getElementById("featured-grid");
+  PRODUCTS.slice(0, 4).forEach((p) => {
+    grid.innerHTML += `
+      <a class="product-card" href="product.html?slug=${p.slug}">
+        <div class="img-wrap"><img src="${p.images[0]}" alt="${p.name}"></div>
+        <div class="info">
+          <h3>${p.name}</h3>
+          <p class="tagline">${p.tagline}</p>
+          <div class="price-row"><span class="price-tag">$${p.price}</span><span>→</span></div>
+        </div>
+      </a>`;
+  });
+</script>
+</body>
+</html>

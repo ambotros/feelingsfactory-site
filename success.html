@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed — The Feelings Factory</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">🏭 The Feelings <span class="dot">Factory</span></a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge" data-cart-badge>0</span></a>
+    </nav>
+  </div>
+</header>
+
+<section class="container empty-state">
+  <p class="emoji">🎉</p>
+  <h1>You're all set!</h1>
+  <p style="max-width:480px; margin:0 auto 24px;">Your order went through. A receipt is on its way to your inbox from Stripe, and we'll get your tee(s) packed up and shipped soon.</p>
+  <a href="shop.html" class="btn">Keep Shopping</a>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="logo">🏭 The Feelings Factory</div>
+  </div>
+</footer>
+
+<script>
+  localStorage.removeItem("tff_cart");
+</script>
+<script src="js/cart.js"></script>
+</body>
+</html>

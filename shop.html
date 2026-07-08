@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop — The Feelings Factory</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">🏭 The Feelings <span class="dot">Factory</span></a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge" data-cart-badge>0</span></a>
+    </nav>
+  </div>
+</header>
+
+<section class="container" style="padding-top:48px;">
+  <div class="section-title">
+    <h2>All the Tees</h2>
+  </div>
+  <div class="product-grid" id="shop-grid"></div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="logo">🏭 The Feelings Factory</div>
+    <div class="footer-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      <a href="https://factormyfeels.etsy.com" target="_blank" rel="noopener" aria-label="Etsy">🧵</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  const grid = document.getElementById("shop-grid");
+  PRODUCTS.forEach((p) => {
+    grid.innerHTML += `
+      <a class="product-card" href="product.html?slug=${p.slug}">
+        <div class="img-wrap"><img src="${p.images[0]}" alt="${p.name}"></div>
+        <div class="info">
+          <h3>${p.name}</h3>
+          <p class="tagline">${p.tagline}</p>
+          <div class="price-row"><span class="price-tag">$${p.price}</span><span>→</span></div>
+        </div>
+      </a>`;
+  });
+</script>
+</body>
+</html>

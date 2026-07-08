@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — The Feelings Factory</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">🏭 The Feelings <span class="dot">Factory</span></a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge" data-cart-badge>0</span></a>
+    </nav>
+  </div>
+</header>
+
+<section class="container cart-page">
+  <h1>Your Cart</h1>
+  <div id="cart-items"></div>
+  <div id="cart-summary-wrap"></div>
+  <p id="checkout-error" style="color:var(--pink); font-weight:600; display:none;"></p>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="logo">🏭 The Feelings Factory</div>
+    <div class="footer-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  function renderCart() {
+    const cart = getCart();
+    const itemsWrap = document.getElementById("cart-items");
+    const summaryWrap = document.getElementById("cart-summary-wrap");
+
+    if (cart.length === 0) {
+      itemsWrap.innerHTML = "";
+      summaryWrap.innerHTML = `
+        <div class="empty-state">
+          <p class="emoji">🛒</p>
+          <h2>Your cart's feeling a little empty.</h2>
+          <a href="shop.html" class="btn">Go Shopping</a>
+        </div>`;
+      return;
+    }
+
+    itemsWrap.innerHTML = cart.map((item, i) => `
+      <div class="cart-item">
+        <img src="${item.image}" alt="${item.name}">
+        <div>
+          <h4>${item.name}</h4>
+          <div class="meta">Size: ${item.size}${item.color ? " · Color: " + item.color : ""}</div>
+        </div>
+        <div class="qty-control">
+          <button onclick="changeQty(${i}, ${item.qty - 1})">−</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty(${i}, ${item.qty + 1})">+</button>
+        </div>
+        <div style="text-align:right;">
+          <div class="price-tag">$${(item.qty * item.price).toFixed(2)}</div>
+          <button class="remove-btn" onclick="removeItem(${i})">Remove</button>
+        </div>
+      </div>
+    `).join("");
+
+    const subtotal = cartTotal();
+    summaryWrap.innerHTML = `
+      <div class="cart-summary">
+        <div class="row"><span>Subtotal</span><span>$${subtotal.toFixed(2)}</span></div>
+        <div class="row" style="opacity:0.7; font-weight:400;"><span>Shipping &amp; tax</span><span>calculated at checkout</span></div>
+        <div class="row total-row"><span>Total</span><span>$${subtotal.toFixed(2)}</span></div>
+        <button class="btn btn-yellow btn-full" style="margin-top:16px;" id="checkout-btn">Checkout Securely →</button>
+      </div>`;
+
+    document.getElementById("checkout-btn").addEventListener("click", startCheckout);
+  }
+
+  function changeQty(index, qty) {
+    updateQty(index, qty);
+    renderCart();
+  }
+
+  function removeItem(index) {
+    removeFromCart(index);
+    renderCart();
+  }
+
+  async function startCheckout() {
+    const btn = document.getElementById("checkout-btn");
+    const errorEl = document.getElementById("checkout-error");
+    errorEl.style.display = "none";
+    btn.disabled = true;
+    btn.textContent = "Redirecting to checkout...";
+
+    try {
+      const res = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: getCart() })
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Something went wrong starting checkout.");
+      }
+    } catch (err) {
+      errorEl.textContent = "Couldn't start checkout: " + err.message;
+      errorEl.style.display = "block";
+      btn.disabled = false;
+      btn.textContent = "Checkout Securely →";
+    }
+  }
+
+  renderCart();
+</script>
+</body>
+</html>

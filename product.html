@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Feelings Factory</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">🏭 The Feelings <span class="dot">Factory</span></a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge" data-cart-badge>0</span></a>
+    </nav>
+  </div>
+</header>
+
+<div class="container" id="product-root"></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="logo">🏭 The Feelings Factory</div>
+    <div class="footer-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      <a href="https://factormyfeels.etsy.com" target="_blank" rel="noopener" aria-label="Etsy">🧵</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Added to cart!</div>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("slug");
+  const product = getProductBySlug(slug);
+  const root = document.getElementById("product-root");
+
+  if (!product) {
+    root.innerHTML = `<div class="empty-state"><p class="emoji">🤷</p><h2>Tee not found</h2><a href="shop.html" class="btn">Back to Shop</a></div>`;
+  } else {
+    document.title = product.name + " — The Feelings Factory";
+
+    let selectedColor = product.colors[0];
+    let selectedSize = null;
+    let qty = 1;
+    let mainImage = product.images[0];
+
+    function render() {
+      root.innerHTML = `
+        <div class="product-detail">
+          <div>
+            <div class="product-gallery-main"><img src="${mainImage}" alt="${product.name}"></div>
+            <div class="product-thumbs">
+              ${product.images.map((img) => `<img src="${img}" data-img="${img}" alt="thumbnail">`).join("")}
+            </div>
+          </div>
+          <div class="product-info">
+            <h1>${product.name}</h1>
+            <p class="tagline-lg">${product.tagline}</p>
+            <span class="price-tag">$${product.price}</span>
+
+            ${product.colors.length > 1 ? `
+            <div class="option-group">
+              <label>Color</label>
+              <div class="option-pills" id="color-pills">
+                ${product.colors.map((c) => `<span class="option-pill ${c === selectedColor ? "selected" : ""}" data-color="${c}">${c}</span>`).join("")}
+              </div>
+            </div>` : ""}
+
+            <div class="option-group">
+              <label>Size</label>
+              <div class="option-pills" id="size-pills">
+                ${product.sizes.map((s) => `<span class="option-pill" data-size="${s}">${s}</span>`).join("")}
+              </div>
+            </div>
+
+            <div class="qty-row">
+              <label style="font-family:'Baloo 2';font-weight:700;">Qty</label>
+              <div class="qty-control">
+                <button id="qty-minus">−</button>
+                <span id="qty-display">1</span>
+                <button id="qty-plus">+</button>
+              </div>
+            </div>
+
+            <button class="btn btn-full" id="add-btn">Add to Cart 🛒</button>
+            <p id="size-warning" style="color:var(--pink); font-weight:600; display:none; margin-top:10px;">Pick a size first!</p>
+
+            <div class="product-desc">${product.description}</div>
+          </div>
+        </div>
+      `;
+
+      document.querySelectorAll("[data-img]").forEach((el) => {
+        el.addEventListener("click", () => {
+          mainImage = el.dataset.img;
+          document.querySelector(".product-gallery-main img").src = mainImage;
+        });
+      });
+
+      document.querySelectorAll("[data-color]").forEach((el) => {
+        el.addEventListener("click", () => {
+          selectedColor = el.dataset.color;
+          document.querySelectorAll("[data-color]").forEach((p) => p.classList.remove("selected"));
+          el.classList.add("selected");
+        });
+      });
+
+      document.querySelectorAll("[data-size]").forEach((el) => {
+        el.addEventListener("click", () => {
+          selectedSize = el.dataset.size;
+          document.querySelectorAll("[data-size]").forEach((p) => p.classList.remove("selected"));
+          el.classList.add("selected");
+          document.getElementById("size-warning").style.display = "none";
+        });
+      });
+
+      document.getElementById("qty-minus").addEventListener("click", () => {
+        qty = Math.max(1, qty - 1);
+        document.getElementById("qty-display").textContent = qty;
+      });
+      document.getElementById("qty-plus").addEventListener("click", () => {
+        qty += 1;
+        document.getElementById("qty-display").textContent = qty;
+      });
+
+      document.getElementById("add-btn").addEventListener("click", () => {
+        if (!selectedSize) {
+          document.getElementById("size-warning").style.display = "block";
+          return;
+        }
+        addToCart({
+          slug: product.slug,
+          name: product.name,
+          price: product.price,
+          size: selectedSize,
+          color: selectedColor,
+          image: product.images[0],
+          qty
+        });
+        showToast();
+      });
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    render();
+  }
+</script>
+</body>
+</html>
