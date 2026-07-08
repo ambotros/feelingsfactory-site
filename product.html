@@ -145,3 +145,45 @@
         }
         addToCart({
           slug: product.slug,
+          name: product.name,
+          price: product.price,
+          size: selectedSize,
+          color: selectedColor,
+          image: product.images[0],
+          qty
+        });
+        showToast();
+        burstConfetti(e.clientX, e.clientY);
+      });
+    }
+
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    function burstConfetti(x, y) {
+      const colors = ["var(--pink)", "var(--teal)", "var(--yellow)", "var(--purple)", "var(--orange)", "var(--sky)"];
+      for (let i = 0; i < 16; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti-piece";
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 60 + Math.random() * 60;
+        const endX = Math.cos(angle) * distance;
+        const endY = Math.sin(angle) * distance;
+        piece.style.setProperty("--confetti-end", `translate(${endX}px, ${endY}px)`);
+        piece.style.setProperty("--confetti-spin", `${Math.random() * 360}deg`);
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.left = x + "px";
+        piece.style.top = y + "px";
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 850);
+      }
+    }
+
+    render();
+  }
+</script>
+</body>
+</html>
