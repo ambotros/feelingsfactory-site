@@ -1,64 +1,675 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — The Feelings Factory</title>
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap');
 
-<header class="site-header">
-  <div class="container">
-    <a href="index.html" class="logo">🏭 The Feelings <span class="dot">Factory</span></a>
-    <nav class="nav-links">
-      <a href="shop.html">Shop</a>
-      <a href="about.html">About</a>
-      <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge" data-cart-badge>0</span></a>
-    </nav>
-  </div>
-</header>
+:root {
+  --cream: #FFF8EC;
+  --cream-dark: #FCEFDA;
+  --ink: #2B2323;
+  --pink: #FF3E8A;
+  --yellow: #FFD400;
+  --teal: #00C2B2;
+  --purple: #9B5DE5;
+  --green: #4CD97B;
+  --orange: #FF7A33;
+  --sky: #3AB4FF;
+  --radius: 20px;
+  --shadow: 4px 4px 0 var(--ink);
+}
 
-<section class="about-hero container">
-  <h1>You're not too much.<br>You're human.</h1>
-</section>
+* { box-sizing: border-box; }
 
-<section class="about-body">
-  <p>The Feelings Factory started as one t-shirt made after a therapy session. That first design — <strong>FAWN AF</strong> — came out of learning what "fawning" actually is: people-pleasing to an extreme, agreeing with everything, shrinking yourself to stay safe. Putting that word on a shirt turned out to be its own kind of therapy.</p>
-  <p>Every design since has come from the same place: real feelings that are usually easier to laugh about than talk about out loud. The overstimulation. The dismissive "at least you're alive." The days the earth feels like it's on fire and somehow that's fine. We make shirts for people who feel things fully and would rather wear the punchline than explain the whole story.</p>
+html, body {
+  margin: 0;
+  padding: 0;
+  background:
+    radial-gradient(circle, rgba(255,62,138,0.18) 3px, transparent 3px) 0 0/38px 38px,
+    radial-gradient(circle, rgba(0,194,178,0.18) 3px, transparent 3px) 19px 19px/38px 38px,
+    radial-gradient(circle, rgba(255,212,0,0.2) 3px, transparent 3px) 9px 28px/38px 38px,
+    radial-gradient(circle, rgba(255,122,51,0.16) 3px, transparent 3px) 28px 9px/38px 38px,
+    radial-gradient(circle, rgba(155,93,229,0.16) 3px, transparent 3px) 14px 5px/38px 38px,
+    var(--cream);
+  color: var(--ink);
+  font-family: 'Nunito', sans-serif;
+  scroll-behavior: smooth;
+}
 
-  <h2>Wear Your Truth</h2>
-  <p>Say the quiet part on a t-shirt. If it's true for you, it's worth putting on your chest.</p>
+h1, h2, h3, .display {
+  font-family: 'Fredoka', 'Baloo 2', cursive;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0 0 0.4em;
+}
 
-  <h2>Made With Empathy</h2>
-  <p>Every design starts as something real — a therapy session, a hard day, an inside joke with our own brains.</p>
+.rainbow-strip {
+  height: 8px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--pink), var(--orange), var(--yellow), var(--green), var(--teal), var(--sky), var(--purple));
+}
 
-  <h2>Comfort That Gets It</h2>
-  <p>Soft, unisex, true-to-size tees, because feeling seen shouldn't come with an itchy collar.</p>
+a { color: inherit; text-decoration: none; }
 
-  <h2>Sarcasm With Compassion</h2>
-  <p>A little dark humor, a lot of heart. We take feelings seriously; we just don't take ourselves too seriously.</p>
+img { max-width: 100%; display: block; }
 
-  <div style="text-align:center; margin-top:48px;">
-    <a href="shop.html" class="btn">Shop the Tees</a>
-  </div>
-</section>
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="logo">🏭 The Feelings Factory</div>
-    <div class="footer-links">
-      <a href="shop.html">Shop</a>
-      <a href="about.html">About</a>
-      <a href="cart.html">Cart</a>
-    </div>
-    <div class="socials">
-      <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
-      <a href="https://factormyfeels.etsy.com" target="_blank" rel="noopener" aria-label="Etsy">🧵</a>
-    </div>
-  </div>
-</footer>
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--cream);
+  border-bottom: 3px solid var(--ink);
+}
 
-<script src="js/cart.js"></script>
-</body>
-</html>
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.logo {
+  font-family: 'Fredoka', cursive;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo .dot { color: var(--pink); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.nav-links a {
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a:hover { color: var(--pink); }
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.cart-link:hover { background: var(--pink); color: var(--ink); }
+
+.cart-badge {
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 800;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Fredoka', cursive;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 3px solid var(--ink);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: var(--shadow);
+  background: var(--pink);
+  color: var(--ink);
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.btn:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.btn-secondary { background: var(--cream); }
+.btn-yellow { background: var(--yellow); }
+.btn-teal { background: var(--teal); }
+.btn-purple { background: var(--purple); color: white; }
+.btn-orange { background: var(--orange); }
+.btn-full { width: 100%; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn:hover { animation: wiggle 0.3s ease; }
+
+@keyframes wiggle {
+  0%, 100% { transform: translate(-2px, -2px) rotate(0deg); }
+  50% { transform: translate(-2px, -2px) rotate(-2deg); }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 72px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(2px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero::before {
+  width: 260px;
+  height: 260px;
+  background: var(--yellow);
+  opacity: 0.55;
+  top: -80px;
+  left: -80px;
+}
+
+.hero::after {
+  width: 220px;
+  height: 220px;
+  background: var(--teal);
+  opacity: 0.5;
+  bottom: -100px;
+  right: 8%;
+  animation-delay: 1.5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-18px) rotate(8deg); }
+}
+
+.hero-copy {
+  position: relative;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--purple);
+  opacity: 0.35;
+  filter: blur(2px);
+  top: 20%;
+  right: -60px;
+  z-index: -1;
+  animation: float 7s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+}
+
+.hero h1 .highlight {
+  background: linear-gradient(90deg, var(--pink), var(--orange), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px var(--ink);
+}
+
+.hero p.lead {
+  font-size: 1.15rem;
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(0px);
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.hero-art {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-art img {
+  border-radius: var(--radius);
+  border: 4px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  max-width: 340px;
+  transform: rotate(3deg);
+}
+
+.badge-sticker {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  background: var(--yellow);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  width: 92px;
+  height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Fredoka', cursive;
+  font-weight: 800;
+  font-size: 0.8rem;
+  transform: rotate(12deg);
+  line-height: 1.1;
+}
+
+.badge-sticker-2 {
+  top: auto;
+  right: auto;
+  bottom: -14px;
+  left: -20px;
+  background: var(--pink);
+  color: white;
+  transform: rotate(-10deg);
+  width: 80px;
+  height: 80px;
+}
+
+/* ---------- Pillars ---------- */
+.pillars {
+  padding: 48px 0;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pillar-card {
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.pillar-card:hover { transform: translateY(-4px) rotate(-1deg); }
+
+.pillar-card .emoji {
+  font-size: 1.6rem;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+}
+
+.pillar-card:nth-child(1) .emoji { background: var(--yellow); }
+.pillar-card:nth-child(2) .emoji { background: var(--teal); }
+.pillar-card:nth-child(3) .emoji { background: var(--pink); }
+.pillar-card:nth-child(4) .emoji { background: var(--purple); }
+
+.pillar-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.pillar-card p { font-size: 0.9rem; margin: 0; opacity: 0.8; }
+
+/* ---------- Section headers ---------- */
+.section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-title h2 { font-size: 2rem; }
+
+.section-title a {
+  font-weight: 700;
+  color: var(--pink);
+}
+
+/* ---------- Product grid ---------- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+  padding: 24px 0 64px;
+}
+
+.product-card {
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  border-top: 8px solid var(--pink);
+}
+
+.product-card:nth-child(6n+1) { border-top-color: var(--pink); }
+.product-card:nth-child(6n+2) { border-top-color: var(--teal); }
+.product-card:nth-child(6n+3) { border-top-color: var(--yellow); }
+.product-card:nth-child(6n+4) { border-top-color: var(--purple); }
+.product-card:nth-child(6n+5) { border-top-color: var(--orange); }
+.product-card:nth-child(6n+6) { border-top-color: var(--sky); }
+
+.product-card:hover {
+  transform: translate(-3px, -3px) rotate(-1deg);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+.product-card .img-wrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--cream-dark);
+  border-bottom: 3px solid var(--ink);
+}
+
+.product-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card .info { padding: 16px 18px 20px; flex: 1; display: flex; flex-direction: column; }
+.product-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.product-card .tagline { font-size: 0.85rem; opacity: 0.75; flex: 1; margin-bottom: 12px; }
+.product-card .price-row { display: flex; align-items: center; justify-content: space-between; }
+.price-tag {
+  font-family: 'Fredoka', cursive;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--pink);
+}
+
+/* ---------- Product detail ---------- */
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  padding: 48px 0 80px;
+  align-items: start;
+}
+
+.product-gallery-main {
+  border: 4px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 8px 8px 0 var(--ink);
+  aspect-ratio: 1/1;
+  background: white;
+}
+
+.product-gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+
+.product-thumbs { display: flex; gap: 10px; margin-top: 14px; }
+
+.product-thumbs img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid var(--ink);
+  cursor: pointer;
+}
+
+.product-info .tagline-lg {
+  font-size: 1.1rem;
+  color: var(--purple);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.product-info .price-tag { font-size: 1.6rem; margin-bottom: 20px; display: block; }
+
+.option-group { margin-bottom: 22px; }
+.option-group label {
+  display: block;
+  font-family: 'Fredoka', cursive;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.option-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.option-pill {
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: white;
+}
+
+.option-pill.selected { background: var(--yellow); }
+
+.qty-row { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.qty-control button {
+  background: var(--cream-dark);
+  border: none;
+  width: 38px;
+  height: 38px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.qty-control span {
+  width: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.product-desc {
+  border-top: 3px dashed var(--ink);
+  margin-top: 28px;
+  padding-top: 20px;
+  line-height: 1.6;
+}
+
+/* ---------- Cart page ---------- */
+.cart-page { padding: 48px 0 80px; }
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 90px 1fr auto auto;
+  gap: 20px;
+  align-items: center;
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+}
+
+.cart-item img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid var(--ink);
+}
+
+.cart-item .meta { font-size: 0.85rem; opacity: 0.75; }
+.cart-item h4 { margin: 0 0 4px; font-size: 1.05rem; }
+
+.cart-item .remove-btn {
+  background: none;
+  border: none;
+  color: var(--pink);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.cart-summary {
+  background: white;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+}
+
+.cart-summary .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.cart-summary .total-row {
+  font-family: 'Fredoka', cursive;
+  font-size: 1.3rem;
+  font-weight: 800;
+  border-top: 3px dashed var(--ink);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty-state .emoji { font-size: 3rem; }
+
+/* ---------- About page ---------- */
+.about-hero {
+  padding: 56px 0 32px;
+  text-align: center;
+}
+
+.about-hero h1 { font-size: clamp(2rem, 4vw, 3rem); }
+
+.about-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 64px;
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+.about-body h2 {
+  margin-top: 40px;
+  color: var(--purple);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 3px solid var(--ink);
+  padding: 40px 0;
+  margin-top: 40px;
+  background: var(--cream-dark);
+}
+
+.site-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links { display: flex; gap: 20px; font-weight: 600; }
+.footer-links a:hover { color: var(--pink); }
+
+.socials { display: flex; gap: 14px; }
+.socials a {
+  width: 38px;
+  height: 38px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+.socials a:hover { background: var(--yellow); }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  color: var(--cream);
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 100;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .hero .container { grid-template-columns: 1fr; }
+  .hero-art { order: -1; }
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-detail { grid-template-columns: 1fr; gap: 32px; }
+  .nav-links { display: none; }
+  .cart-item { grid-template-columns: 70px 1fr; grid-template-rows: auto auto; }
+}
