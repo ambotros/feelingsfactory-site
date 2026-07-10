@@ -15,7 +15,9 @@ const PRODUCTS = [
     sizes: ["S", "M", "L", "XL", "2X", "3X"],
     images: [
       "https://i.etsystatic.com/65329339/r/il/14b8e5/8192369369/il_1080xN.8192369369_taf5.jpg",
-      "https://i.etsystatic.com/65329339/r/il/e72f79/8192369357/il_794xN.8192369357_bydx.jpg"
+      "https://i.etsystatic.com/65329339/r/il/e72f79/8192369357/il_794xN.8192369357_bydx.jpg",
+      "https://i.etsystatic.com/65329339/r/il/8b7439/8192369367/il_794xN.8192369367_q8rl.jpg",
+      "https://i.etsystatic.com/65329339/r/il/fc724c/8192369371/il_794xN.8192369371_1dn0.jpg"
     ]
   },
   {
@@ -29,7 +31,8 @@ const PRODUCTS = [
     sizes: ["S", "M", "L", "XL", "2X", "3X"],
     images: [
       "https://i.etsystatic.com/65329339/r/il/016333/8137238717/il_1080xN.8137238717_rx9j.jpg",
-      "https://i.etsystatic.com/65329339/r/il/761198/8137239545/il_794xN.8137239545_ks5n.jpg"
+      "https://i.etsystatic.com/65329339/r/il/761198/8137239545/il_794xN.8137239545_ks5n.jpg",
+      "https://i.etsystatic.com/65329339/r/il/d8b1a5/8137239173/il_794xN.8137239173_5910.jpg"
     ]
   },
   {
@@ -43,7 +46,11 @@ const PRODUCTS = [
     sizes: ["S", "M", "L", "XL", "2X"],
     images: [
       "https://i.etsystatic.com/65329339/r/il/cb849f/8137196007/il_1080xN.8137196007_lgla.jpg",
-      "https://i.etsystatic.com/65329339/r/il/f58c52/8089290984/il_794xN.8089290984_7iwf.jpg"
+      "https://i.etsystatic.com/65329339/r/il/f58c52/8089290984/il_794xN.8089290984_7iwf.jpg",
+      "https://i.etsystatic.com/65329339/r/il/39a0e5/8137195579/il_794xN.8137195579_erzs.jpg",
+      "https://i.etsystatic.com/65329339/r/il/d44ae6/8089290256/il_794xN.8089290256_bazh.jpg",
+      "https://i.etsystatic.com/65329339/r/il/55ec74/8137196787/il_794xN.8137196787_nuqe.jpg",
+      "https://i.etsystatic.com/65329339/r/il/aef074/8089315034/il_794xN.8089315034_ct29.jpg"
     ]
   },
   {
@@ -57,7 +64,9 @@ const PRODUCTS = [
     sizes: ["XS", "S", "M", "L", "XL", "2X", "3X"],
     images: [
       "https://i.etsystatic.com/65329339/r/il/b0454a/8081697745/il_1080xN.8081697745_h3sz.jpg",
-      "https://i.etsystatic.com/65329339/r/il/5cf1f0/8081698387/il_794xN.8081698387_qcjh.jpg"
+      "https://i.etsystatic.com/65329339/r/il/5cf1f0/8081698387/il_794xN.8081698387_qcjh.jpg",
+      "https://i.etsystatic.com/65329339/r/il/481b96/7977857443/il_794xN.7977857443_nu1i.jpg",
+      "https://i.etsystatic.com/65329339/r/il/473e1d/8081698735/il_794xN.8081698735_201g.jpg"
     ]
   },
   {
@@ -85,7 +94,9 @@ const PRODUCTS = [
     sizes: ["S", "M", "L", "XL", "2X", "3X"],
     images: [
       "https://i.etsystatic.com/65329339/r/il/69f43c/8033066968/il_1080xN.8033066968_idnm.jpg",
-      "https://i.etsystatic.com/65329339/r/il/7f06f1/7880536654/il_794xN.7880536654_6zl9.jpg"
+      "https://i.etsystatic.com/65329339/r/il/7f06f1/7880536654/il_794xN.7880536654_6zl9.jpg",
+      "https://i.etsystatic.com/65329339/r/il/c7d5c7/8080981439/il_794xN.8080981439_ci6y.jpg",
+      "https://i.etsystatic.com/65329339/r/il/2c63e8/8033067934/il_794xN.8033067934_k4rv.jpg"
     ]
   },
   {
@@ -99,7 +110,11 @@ const PRODUCTS = [
     sizes: ["XS", "S", "M", "L", "XL", "2X", "3X"],
     images: [
       "https://i.etsystatic.com/65329339/r/il/a1b5f8/8038597862/il_1080xN.8038597862_4do1.jpg",
-      "https://i.etsystatic.com/65329339/r/il/b1b2f1/8038609078/il_794xN.8038609078_hd2c.jpg"
+      "https://i.etsystatic.com/65329339/r/il/b1b2f1/8038609078/il_794xN.8038609078_hd2c.jpg",
+      "https://i.etsystatic.com/65329339/r/il/3893a7/8086510655/il_794xN.8086510655_aueq.jpg",
+      "https://i.etsystatic.com/65329339/r/il/76469c/8038663776/il_794xN.8038663776_mxnn.jpg",
+      "https://i.etsystatic.com/65329339/r/il/45a1a4/8038663912/il_794xN.8038663912_8v4v.jpg",
+      "https://i.etsystatic.com/65329339/r/il/6da270/8038664130/il_794xN.8038664130_ebts.jpg"
     ]
   }
 ];
