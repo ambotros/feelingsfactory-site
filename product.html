@@ -63,7 +63,7 @@
       root.innerHTML = `
         <div class="product-detail">
           <div>
-            <div class="product-gallery-main" style="background: var(--${matColor});"><img src="${mainImage}" alt="${product.name}" style="mix-blend-mode: multiply;"></div>
+            <div class="product-gallery-main" style="background: var(--${matColor});"><img src="${mainImage}" alt="${product.name}"></div>
             <div class="product-thumbs">
               ${product.images.map((img) => `<img src="${img}" data-img="${img}" alt="thumbnail">`).join("")}
             </div>
